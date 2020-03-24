@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { EventsComponent } from './events/events.component';
-import { SpecialsComponent } from './specials/specials.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { EventsComponent } from './components/events/events.component';
+import { SpecialsComponent } from './components/specials/specials.component';
 
 const routes: Routes = [
   {
