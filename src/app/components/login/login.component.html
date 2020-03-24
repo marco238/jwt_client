@@ -9,16 +9,36 @@
           <h3 class="mb-0">Login</h3>
         </div>
         <div class="card-body">
-          <form class="form">
+          <form class="form" #form="ngForm">
             <div class="form-group">
               <label for="uname1">Username</label>
-              <input [(ngModel)]="loginUserData.email" type="text" class="form-control rounded-0" name="email" required>
+              <input
+                [(ngModel)]="loginUserData.email"
+                type="text"
+                class="form-control rounded-0"
+                name="email" id="email"
+                #nameInput="ngModel"
+                required
+                email>
+              <p class="text-danger text-right" *ngIf="nameInput.touched && !nameInput.valid">Username needed!</p>
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input [(ngModel)]="loginUserData.password" type="password" class="form-control rounded-0" name="password" required>
+              <input
+                [(ngModel)]="loginUserData.password"
+                type="password"
+                class="form-control rounded-0"
+                name="password"
+                #passInput="ngModel"
+                required
+                minlength="6">
+              <p class="text-danger text-right" *ngIf="passInput.touched && !passInput.valid">Password needed!</p>
             </div>
-            <button type="button" class="btn btn-success float-right" (click)="loginUser()">Login</button>
+            <button
+              [disabled]="!form.valid"
+              type="button"
+              class="btn btn-success float-right"
+              (click)="loginUser(form)">Login</button>
           </form>
         </div>
       </div>

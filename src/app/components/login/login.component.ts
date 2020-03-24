@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    console.log('form: ', this.loginUserData);
     this._auth.loginUser(this.loginUserData)
       .subscribe(
         res => console.log(res),
