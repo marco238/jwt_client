@@ -20,7 +20,7 @@
                 #nameInput="ngModel"
                 required
                 email>
-              <p class="text-danger text-right" *ngIf="nameInput.touched && !nameInput.valid">Username needed!</p>
+              <p class="text-danger text-right" *ngIf="nameInput.touched && !nameInput.valid">{{nameInput.value === '' ? 'Username needed!' : 'Username must have a valid email structure'}}</p>
             </div>
             <div class="form-group">
               <label>Password</label>
@@ -32,7 +32,7 @@
                 #passInput="ngModel"
                 required
                 minlength="6">
-              <p class="text-danger text-right" *ngIf="passInput.touched && !passInput.valid">Password needed!</p>
+              <p class="text-danger text-right" *ngIf="passInput.touched && !passInput.valid">{{passInput.value === '' ? 'Password needed!' : 'Password must have at least 6 characters!'}}</p>
             </div>
             <button
               [disabled]="!form.valid"
