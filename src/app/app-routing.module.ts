@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { EventsComponent } from './components/events/events.component';
 import { SpecialsComponent } from './components/specials/specials.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'specials',
-    component: SpecialsComponent
+    component: SpecialsComponent,
+    canActivate: [AuthGuard]
   },
 ];
 
