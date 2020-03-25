@@ -8,13 +8,16 @@ import { EventsService } from '../../services/events.service';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
+  events: any = [];
 
   constructor(private _fetch: EventsService) { }
 
   ngOnInit() {
     this._fetch.fetchEvents()
       .subscribe(
-        res => console.log(res),
+        res => {
+          this.events = res;
+        },
         err => console.log(err)
       )
   }
