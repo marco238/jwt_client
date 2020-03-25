@@ -10,10 +10,10 @@ import { EventsService } from '../../services/events.service';
 export class EventsComponent implements OnInit {
   events: any = [];
 
-  constructor(private _fetch: EventsService) { }
+  constructor(private _eventService: EventsService) { }
 
   ngOnInit() {
-    this._fetch.fetchEvents()
+    this._eventService.fetchEvents()
       .subscribe(
         res => {
           this.events = res;

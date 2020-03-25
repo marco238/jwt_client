@@ -8,13 +8,16 @@ import { EventsService } from '../../services/events.service';
   styleUrls: ['./specials.component.css']
 })
 export class SpecialsComponent implements OnInit {
+  specialEvents: any = [];
 
-  constructor(private _fetch: EventsService) { }
+  constructor(private _eventService: EventsService) { }
 
   ngOnInit() {
-    this._fetch.fetchSpecials()
+    this._eventService.fetchSpecials()
     .subscribe(
-      res => console.log(res),
+      res => {
+        this.specialEvents = res;
+      },
       err => console.log(err)
     )
   }
