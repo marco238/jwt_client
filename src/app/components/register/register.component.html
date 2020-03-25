@@ -9,16 +9,36 @@
           <h3 class="mb-0">Register</h3>
         </div>
         <div class="card-body">
-          <form class="form">
+          <form class="form" #form="ngForm">
             <div class="form-group">
               <label for="uname1">Username</label>
-              <input [(ngModel)]="registerUserData.email" type="text" name="email" class="form-control rounded-0" required>
+              <input
+                [(ngModel)]="registerUserData.email"
+                type="text"
+                name="email"
+                #nameInput="ngModel"
+                class="form-control rounded-0"
+                required
+                email>
+              <p class="text-danger text-right" *ngIf="nameInput.touched && !nameInput.valid">{{nameInput.value === '' ? 'Username needed!' : 'Username must have a valid email structure'}}</p>
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input [(ngModel)]="registerUserData.password" type="password" name="password" class="form-control rounded-0"  required>
+              <input
+                [(ngModel)]="registerUserData.password"
+                type="password"
+                class="form-control rounded-0"
+                name="password"
+                #passInput="ngModel"
+                required
+                minlength="6">
+              <p class="text-danger text-right" *ngIf="passInput.touched && !passInput.valid">{{passInput.value === '' ? 'Password needed!' : 'Password must have at least 6 characters!'}}</p>
             </div>
-            <button type="button" class="btn btn-primary float-right" (click)="registerUser()">Register</button>
+            <button
+              [disabled]="!form.valid"
+              type="button"
+              class="btn btn-primary float-right"
+              (click)="registerUser()">Register</button>
           </form>
         </div>
       </div>
